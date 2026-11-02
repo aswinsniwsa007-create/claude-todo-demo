@@ -1,14 +1,18 @@
 :root {
-  --bg: #0f0f10;
-  --fg: #f5f5f5;
-  --fg-dim: #8a8a8a;
+  --bg-outer: #e7e7ea;
+  --app-bg: #101013;
+  --app-fg: #f5f5f7;
+  --app-fg-dim: #8c8c92;
+  --accent: #5b8cff;
+  --topbar-bg: #17171b;
+  --tabbar-bg: #17171b;
+  --border: #232327;
+  --radius: 28px;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --bg: #fafafa;
-    --fg: #111111;
-    --fg-dim: #8a8a8a;
+    --bg-outer: #eceef1;
   }
 }
 
@@ -26,26 +30,132 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg);
-  color: var(--fg);
+  background: var(--bg-outer);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-.clock {
+.phone {
+  width: min(380px, 92vw);
+  height: min(720px, 92vh);
+  padding: 10px;
+  background: #000;
+  border-radius: calc(var(--radius) + 10px);
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.35),
+    0 10px 20px -10px rgba(0, 0, 0, 0.25);
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--app-bg);
+  color: var(--app-fg);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 12px;
+  background: var(--topbar-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.format-toggle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--app-fg-dim);
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.format-toggle:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.screen {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock-face {
   text-align: center;
   user-select: none;
 }
 
 .time {
-  font-size: clamp(3rem, 12vw, 7rem);
+  font-size: clamp(2.6rem, 11vw, 3.4rem);
   font-weight: 300;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   font-variant-numeric: tabular-nums;
 }
 
+.secs {
+  color: var(--app-fg-dim);
+  font-size: 0.55em;
+}
+
+.meridiem {
+  margin-top: 2px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  min-height: 1.1em;
+}
+
 .date {
-  margin-top: 0.75rem;
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  font-weight: 400;
-  color: var(--fg-dim);
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  color: var(--app-fg-dim);
+}
+
+.tabbar {
+  display: flex;
+  background: var(--tabbar-bg);
+  border-top: 1px solid var(--border);
+  padding: 8px 6px calc(10px + env(safe-area-inset-bottom, 0px));
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--app-fg-dim);
+  padding: 6px 2px;
+  cursor: pointer;
+}
+
+.tab-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.tab-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.tab.active {
+  color: var(--accent);
 }

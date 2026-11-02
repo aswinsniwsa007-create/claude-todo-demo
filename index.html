@@ -2,15 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Clock</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="clock">
-    <div class="time" id="time">00:00:00</div>
-    <div class="date" id="date">Monday, January 1</div>
-  </main>
+  <div class="phone">
+    <div class="app">
+      <header class="topbar">
+        <span class="topbar-title">Clock</span>
+        <button class="format-toggle" id="formatToggle" aria-label="Toggle time format">24H</button>
+      </header>
+
+      <main class="screen">
+        <div class="clock-face">
+          <div class="time" id="time">00:00<span class="secs" id="secs">:00</span></div>
+          <div class="meridiem" id="meridiem"></div>
+          <div class="date" id="date">Monday, January 1</div>
+        </div>
+      </main>
+
+      <nav class="tabbar">
+        <button class="tab active" data-tab="clock">
+          <span class="tab-icon">&#9679;</span>
+          <span class="tab-label">Clock</span>
+        </button>
+        <button class="tab" data-tab="alarm">
+          <span class="tab-icon">&#9671;</span>
+          <span class="tab-label">Alarm</span>
+        </button>
+        <button class="tab" data-tab="stopwatch">
+          <span class="tab-icon">&#9675;</span>
+          <span class="tab-label">Stopwatch</span>
+        </button>
+        <button class="tab" data-tab="timer">
+          <span class="tab-icon">&#9651;</span>
+          <span class="tab-label">Timer</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
